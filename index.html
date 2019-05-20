@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google 3D Model Viewer</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="main-style.css">
+    <script src="../node_modules/resize-observer-polyfill/dist/ResizeObserver.js"></script>
+    
+    <!-- REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+
+    <!-- OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+
+    <!-- OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
+    <script src="https://unpkg.com/resize-observer-polyfill@1.5.1/dist/ResizeObserver.js"></script>
+
+    <!-- OPTIONAL: Fullscreen polyfill is required for experimental AR features in Canary -->
+    <script src="https://unpkg.com/fullscreen-polyfill@1.0.2/dist/fullscreen.polyfill.js"></script>
+  </head> 
+
+  <body>
+    <!-- Browser Support -->
+    <script type="module"
+    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js">
+    </script>
+
+    <script nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js">
+    </script>
+
+    <script>
+      import '@google/model-viewer';
+    </script>
+
+  <div id="div-container">
+  <model-viewer id="animation" camera-controls autoplay
+    src="/assets/badger/Badger.gltf" 
+    ar
+    ios-src
+    background-color="#080808"
+    background-image="snowy_park.hdr"
+    shadow-intensity="1"
+    camera-orbit="-75deg 75deg 25m"
+    alt="Badger">
+  </model-viewer>
+  <!--<script>
+    (() => {
+      const modelViewer = document.querySelector('#animation');
+  
+      self.setInterval(() => {
+        modelViewer.animationName = modelViewer.animationName === 'Running' ?
+          'Running': 'Wave'
+      }, 1500.0);
+    })();
+    </script>-->
+  </div>  
+
+  <div id="div-container">
+    <model-viewer camera-controls auto-rotate align-model="center"
+      src="/assets/robot_ball/scene.gltf" 
+      ar
+      ios-src
+      background-color="#080808"
+      background-image="mountain_dawn.hdr"
+      shadow-intensity="1"
+      camera-orbit="-10deg 75deg 25m"
+      alt="Robot Ball">
+    </model-viewer>
+  </div>
+
+  <div id="div-container">
+    <model-viewer id="camera-orbit" src="/assets/tv/tv.gltf" 
+      background-color="#080808" 
+      background-image="moonless_golf_2k.hdr"
+      alt="3D TV Model">
+    </model-viewer>
+
+    <script>
+      (() => {
+        const modelViewer = document.querySelector('#camera-orbit');
+        const orbitCycle = [
+          '45deg 55deg 4m',
+          '-60deg 110deg 2m',
+          modelViewer.cameraOrbit
+        ];
+
+      setInterval(() => {
+        const currentOrbitIndex = orbitCycle.indexOf(modelViewer.cameraOrbit);
+        modelViewer.cameraOrbit =
+            orbitCycle[(currentOrbitIndex + 1) % orbitCycle.length];
+        }, 3000);
+     })();
+    </script>
+  </div>
+
+</body>
+</html>
