@@ -36,8 +36,9 @@
       import '@google/model-viewer';
     </script>
 
+  <h5>Camera Orbit Demo</h5>
   <div id="div-container">
-  <model-viewer id="animation" camera-controls autoplay
+  <model-viewer id="camera-orbit" camera-controls autoplay
     src="/assets/badger/Badger.gltf" 
     ar
     ios-src
@@ -47,6 +48,22 @@
     camera-orbit="-75deg 75deg 25m"
     alt="Badger">
   </model-viewer>
+  <script>
+    (() => {
+      const modelViewer = document.querySelector('#camera-orbit');
+      const orbitCycle = [
+        '45deg 55deg 4m',
+        '-60deg 110deg 2m',
+        modelViewer.cameraOrbit
+      ];
+
+    setInterval(() => {
+      const currentOrbitIndex = orbitCycle.indexOf(modelViewer.cameraOrbit);
+      modelViewer.cameraOrbit =
+          orbitCycle[(currentOrbitIndex + 1) % orbitCycle.length];
+      }, 3000);
+   })();
+  </script>
   <!--<script>
     (() => {
       const modelViewer = document.querySelector('#animation');
@@ -59,6 +76,7 @@
     </script>-->
   </div>  
 
+  <h5>Auto-Rotate Demo</h5>
   <div id="div-container">
     <model-viewer camera-controls auto-rotate align-model="center"
       src="/assets/robot_ball/scene.gltf" 
@@ -72,29 +90,15 @@
     </model-viewer>
   </div>
 
+  <h5>Augmented-Reality (AR) Demo</h5>
   <div id="div-container">
-    <model-viewer id="camera-orbit" src="/assets/tv/tv.gltf" 
+    <model-viewer src="/assets/coffee/coffee.gltf" 
+      ar camera-controls
+      ios-src="assets/coffee/coffee.usdz" magic-leap unstable-webxr
       background-color="#080808" 
-      background-image="moonless_golf_2k.hdr"
+      background-image="pool_2k.hdr"
       alt="3D TV Model">
     </model-viewer>
-
-    <script>
-      (() => {
-        const modelViewer = document.querySelector('#camera-orbit');
-        const orbitCycle = [
-          '45deg 55deg 4m',
-          '-60deg 110deg 2m',
-          modelViewer.cameraOrbit
-        ];
-
-      setInterval(() => {
-        const currentOrbitIndex = orbitCycle.indexOf(modelViewer.cameraOrbit);
-        modelViewer.cameraOrbit =
-            orbitCycle[(currentOrbitIndex + 1) % orbitCycle.length];
-        }, 3000);
-     })();
-    </script>
   </div>
 
 </body>

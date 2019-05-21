@@ -1,11 +1,15 @@
 #div-container {
-  margin: 3em auto;
-  display: flex;
-  flex-direction: column;
+  margin: 2em auto;
   max-width: 600px;
   border-radius: 6px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 5px 10px #808080;
   overflow: hidden;
+}
+
+h5 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 12px;
+  text-align: center;
 }
 
 model-viewer {
