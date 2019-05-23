@@ -1,7 +1,7 @@
 # 3D Model Viewer
 The goal of this API is to make it easy to add 3D models to your webpages. The 3D Model Viewer is a web component that allows you to host the model on your site and provide an interactive way for users to explore the 3D model. 
 
-![Project](/images/page-demo.png)
+![Project](/images/page_demo.png)
 
 ## Getting Started
 
@@ -128,15 +128,16 @@ On supported devices, the ```ar```m ```ios-src```, and other platform attributes
   </model-viewer>
 ```
 
-### Resources
+## Resources
 
-## Project resources
+### Project resources
 * [Google's Model-Viewer Web Component](https://developers.google.com/web/updates/2019/02/model-viewer)
 * [Documentation](https://googlewebcomponents.github.io/model-viewer/index.html)
 
-## Stock models and images
+### Stock models and images
 * [Polyfab](https://poly.google.com/)
 * [Sketchfab](https://sketchfab.com/feed)
 * [HDRIHaven](https://hdrihaven.com/)
 
 ### Project Credits
+Project adapted from Google's API 3D Model Viewer.
